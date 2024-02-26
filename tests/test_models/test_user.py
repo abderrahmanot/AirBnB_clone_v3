@@ -1,31 +1,34 @@
 #!/usr/bin/python3
-"""
-test_user module
-"""
-from unittest import TestCase
-import pycodestyle
+""" """
+from tests.test_models.test_base_model import test_basemodel
 from models.user import User
 
 
-class TestUser(TestCase):
-    """
-    TestUser class
-    """
+class test_User(test_basemodel):
+    """ """
 
-    def test_pep(self):
-        """test pep"""
-        style = pycodestyle.StyleGuide(quiet=True)
-        result = style.check_files(['models/user.py',
-                                    'tests/test_models/test_user.py'])
-        self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
+    def __init__(self, *args, **kwargs):
+        """ """
+        super().__init__(*args, **kwargs)
+        self.name = "User"
+        self.value = User
 
-    def test_module_doc(self):
-        """test module documentation"""
-        doc = __import__('models.user').__doc__
-        self.assertGreater(len(doc), 1)
+    def test_first_name(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.first_name), str)
 
-    def test_class_doc(self):
-        """test class documentation"""
-        doc = User.__doc__
-        self.assertGreater(len(doc), 1)
+    def test_last_name(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.last_name), str)
+
+    def test_email(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.email), str)
+
+    def test_password(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.password), str)

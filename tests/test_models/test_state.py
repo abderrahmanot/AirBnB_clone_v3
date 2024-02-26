@@ -1,31 +1,19 @@
 #!/usr/bin/python3
-"""
-test_state module
-"""
-from unittest import TestCase
-import pycodestyle
+""" """
+from tests.test_models.test_base_model import test_basemodel
 from models.state import State
 
 
-class TestState(TestCase):
-    """
-    TestState class
-    """
+class test_state(test_basemodel):
+    """ """
 
-    def test_pep(self):
-        """test pep"""
-        style = pycodestyle.StyleGuide(quiet=True)
-        result = style.check_files(['models/state.py',
-                                    'tests/test_models/test_state.py'])
-        self.assertEqual(result.total_errors, 0,
-                         "Found code style errors (and warnings).")
+    def __init__(self, *args, **kwargs):
+        """ """
+        super().__init__(*args, **kwargs)
+        self.name = "State"
+        self.value = State
 
-    def test_module_doc(self):
-        """test module documentation"""
-        doc = __import__('models.state').__doc__
-        self.assertGreater(len(doc), 1)
-
-    def test_class_doc(self):
-        """test class documentation"""
-        doc = State.__doc__
-        self.assertGreater(len(doc), 1)
+    def test_name3(self):
+        """ """
+        new = self.value()
+        self.assertEqual(type(new.name), str)

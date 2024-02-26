@@ -1,152 +1,142 @@
-# AirBnB Clone
+<center> <h1>HBNB - The Console</h1> </center>
 
-## Description
+This repository contains the initial stage of a student project to build a clone of the AirBnB website. This stage implements a backend interface, or console, to manage program data. Console commands allow the user to create, update, and destroy objects, as well as manage file storage. Using a system of JSON serialization/deserialization, storage is persistent between sessions.
 
-clone of AirBnB platform with limited features.
+---
 
-## Usage
+<center><h3>Repository Contents by Project Task</h3> </center>
 
-### How Start it
+| Tasks | Files | Description |
+| ----- | ----- | ------ |
+| 0: Authors/README File | [AUTHORS](https://github.com/timothymayor/AirBnB_clone_v2/blob/main/AUTHORS) | Project authors |
+| 1: Pep8 | N/A | All code is pep8 compliant|
+| 2: Unit Testing | [/tests](https://github.com/justinmajetich/AirBnB_clone/tree/dev/tests) | All class-defining modules are unittested |
+| 3. Make BaseModel | [/models/base_model.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/base_model.py) | Defines a parent class to be inherited by all model classes|
+| 4. Update BaseModel w/ kwargs | [/models/base_model.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/base_model.py) | Add functionality to recreate an instance of a class from a dictionary representation|
+| 5. Create FileStorage class | [/models/engine/file_storage.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/engine/file_storage.py) [/models/_ _init_ _.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/__init__.py) [/models/base_model.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/base_model.py) | Defines a class to manage persistent file storage system|
+| 6. Console 0.0.1 | [console.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/console.py) | Add basic functionality to console program, allowing it to quit, handle empty lines and ^D |
+| 7. Console 0.1 | [console.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/console.py) | Update the console with methods allowing the user to create, destroy, show, and update stored data |
+| 8. Create User class | [console.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/console.py) [/models/engine/file_storage.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/engine/file_storage.py) [/models/user.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/user.py) | Dynamically implements a user class |
+| 9. More Classes | [/models/user.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/user.py) [/models/place.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/place.py) [/models/city.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/city.py) [/models/amenity.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/amenity.py) [/models/state.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/state.py) [/models/review.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/review.py) | Dynamically implements more classes |
+| 10. Console 1.0 | [console.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/console.py) [/models/engine/file_storage.py](https://github.com/justinmajetich/AirBnB_clone/blob/dev/models/engine/file_storage.py) | Update the console and file storage system to work dynamically with all  classes update file storage |
+<br>
+<br>
+<center> <h2>General Use</h2> </center>
 
-    ./console.py
+1. First clone this repository.
 
-### How to display help
+3. Once the repository is cloned locate the "console.py" file and run it as follows:
+```
+/AirBnB_clone$ ./console.py
+```
+4. When this command is run the following prompt should appear:
+```
+(hbnb)
+```
+5. This prompt designates you are in the "HBnB" console. There are a variety of commands available within the console program.
 
-    (hbnb) help
+##### Commands
+    * create - Creates an instance based on given class
 
-    Documented commands (type help <topic>):
-    ========================================
-    EOF  all  count  create  destroy  help  quit  show  update
+    * destroy - Destroys an object based on class and UUID
 
-    (hbnb)
+    * show - Shows an object based on class and UUID
 
-### How to display help for quit command
+    * all - Shows all objects the program has access to, or all objects of a given class
 
-    (hbnb) help quit
-    Quit command to exit the program
+    * update - Updates existing attributes an object based on class name and UUID
 
-    (hbnb)
+    * quit - Exits the program (EOF will as well)
 
-### How to exit the console
 
-    (hbnb) quit
-    $
+##### Alternative Syntax
+Users are able to issue a number of console command using an alternative syntax:
 
-### How to create a User
+	Usage: <class_name>.<command>([<id>[name_arg value_arg]|[kwargs]])
+Advanced syntax is implemented for the following commands: 
 
-    (hbnb) create User
-    320098c5-ab99-4134-b205-5911dec9c9fa
-    (hbnb)
+    * all - Shows all objects the program has access to, or all objects of a given class
 
-### How to create a State
+	* count - Return number of object instances by class
 
-    (hbnb) create State
-    d7fb1ba3-5c46-4197-aca1-36094cf22ee9
-    (hbnb)
+    * show - Shows an object based on class and UUID
 
-### How to create a City
+	* destroy - Destroys an object based on class and UUID
 
-    (hbnb) create City
-    3e647f03-7954-48da-89fd-6504c68dfb09
-    (hbnb)
+    * update - Updates existing attributes an object based on class name and UUID
 
-### How to create a user
+<br>
+<br>
+<center> <h2>Examples</h2> </center>
+<h3>Primary Command Syntax</h3>
 
-    (hbnb) create Amenity
-    f81e070f-52b6-4a5d-b13b-6c6c33838b4b
-    (hbnb)
+###### Example 0: Create an object
+Usage: create <class_name>
+```
+(hbnb) create BaseModel
+```
+```
+(hbnb) create BaseModel
+3aa5babc-efb6-4041-bfe9-3cc9727588f8
+(hbnb)                   
+```
+###### Example 1: Show an object
+Usage: show <class_name> <_id>
 
-### How to create a Place
+```
+(hbnb) show BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
+[BaseModel] (3aa5babc-efb6-4041-bfe9-3cc9727588f8) {'id': '3aa5babc-efb6-4041-bfe9-3cc9727588f8', 'created_at': datetime.datetime(2020, 2, 18, 14, 21, 12, 96959), 
+'updated_at': datetime.datetime(2020, 2, 18, 14, 21, 12, 96971)}
+(hbnb)  
+```
+###### Example 2: Destroy an object
+Usage: destroy <class_name> <_id>
+```
+(hbnb) destroy BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
+(hbnb) show BaseModel 3aa5babc-efb6-4041-bfe9-3cc9727588f8
+** no instance found **
+(hbnb)   
+```
+###### Example 3: Update an object
+Usage: update <class_name> <_id>
+```
+(hbnb) update BaseModel b405fc64-9724-498f-b405-e4071c3d857f first_name "person"
+(hbnb) show BaseModel b405fc64-9724-498f-b405-e4071c3d857f
+[BaseModel] (b405fc64-9724-498f-b405-e4071c3d857f) {'id': 'b405fc64-9724-498f-b405-e4071c3d857f', 'created_at': datetime.datetime(2020, 2, 18, 14, 33, 45, 729889), 
+'updated_at': datetime.datetime(2020, 2, 18, 14, 33, 45, 729907), 'first_name': 'person'}
+(hbnb)
+```
+<h3>Alternative Syntax</h3>
 
-    (hbnb) create Place
-    25690873-52e4-4be3-8bcb-029249c91a32
-    (hbnb)
+###### Example 0: Show all User objects
+Usage: <class_name>.all()
+```
+(hbnb) User.all()
+["[User] (99f45908-1d17-46d1-9dd2-b7571128115b) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 34, 92071), 'id': '99f45908-1d17-46d1-9dd2-b7571128115b', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 34, 92056)}", "[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
+```
 
-### How to create a Review
-
-    (hbnb) create Review
-    e76e9aaa-9871-4db2-85dc-f5765cc85a71
-    (hbnb)
-
-### How to display a User
-
-    (hbnb) show User 320098c5-ab99-4134-b205-5911dec9c9fa
-    [User] (320098c5-ab99-4134-b205-5911dec9c9fa) {'id': '320098c5-ab99-4134-b205-5911dec9c9fa', 'created_at': datetime.datetime(2022, 10, 30, 14, 22, 59, 416038), 'updated_at': datetime.datetime(2022, 10, 30, 14, 22, 59, 416059)}
-    (hbnb)
-
-### How to display a State
-
-    (hbnb) show State d7fb1ba3-5c46-4197-aca1-36094cf22ee9
-    [State] (d7fb1ba3-5c46-4197-aca1-36094cf22ee9) {'id': 'd7fb1ba3-5c46-4197-aca1-36094cf22ee9', 'created_at': datetime.datetime(2022, 10, 30, 14, 23, 34, 516438), 'updated_at': datetime.datetime(2022, 10, 30, 14, 23, 34, 516491)}
-    (hbnb)
-
-### How to display a City
-
-    (hbnb) show City 3e647f03-7954-48da-89fd-6504c68dfb09
-    [City] (3e647f03-7954-48da-89fd-6504c68dfb09) {'id': '3e647f03-7954-48da-89fd-6504c68dfb09', 'created_at': datetime.datetime(2022, 10, 30, 14, 23, 54, 140492), 'updated_at': datetime.datetime(2022, 10, 30, 14, 23, 54, 140522)}
-    (hbnb)
-
-### How to display a Amenity
-
-    (hbnb) show Amenity f81e070f-52b6-4a5d-b13b-6c6c33838b4b
-    [Amenity] (f81e070f-52b6-4a5d-b13b-6c6c33838b4b) {'id': 'f81e070f-52b6-4a5d-b13b-6c6c33838b4b', 'created_at': datetime.datetime(2022, 10, 30, 14, 24, 11, 584531), 'updated_at': datetime.datetime(2022, 10, 30, 14, 24, 11, 584564)}
-    (hbnb)
-
-### How to display a Place
-
-    (hbnb) show Place 25690873-52e4-4be3-8bcb-029249c91a32
-    [Place] (25690873-52e4-4be3-8bcb-029249c91a32) {'id': '25690873-52e4-4be3-8bcb-029249c91a32', 'created_at': datetime.datetime(2022, 10, 30, 14, 24, 40, 116241), 'updated_at': datetime.datetime(2022, 10, 30, 14, 24, 40, 116287)}
-    (hbnb)
-
-### How to display a Review
-
-    (hbnb) show Review e76e9aaa-9871-4db2-85dc-f5765cc85a71
-    [Review] (e76e9aaa-9871-4db2-85dc-f5765cc85a71) {'id': 'e76e9aaa-9871-4db2-85dc-f5765cc85a71', 'created_at': datetime.datetime(2022, 10, 30, 14, 24, 49, 88134), 'updated_at': datetime.datetime(2022, 10, 30, 14, 24, 49, 88189)}
-    (hbnb)
-
-### How to delete a User
-
-    (hbnb) destroy User 320098c5-ab99-4134-b205-5911dec9c9fa
-    (hbnb)
-
-### How to delete a State
-
-    (hbnb) destroy State d7fb1ba3-5c46-4197-aca1-36094cf22ee9
-    (hbnb)
-
-### How to delete a City
-
-    (hbnb) destroy City 3e647f03-7954-48da-89fd-6504c68dfb09
-    (hbnb)
-
-### How to delete a Amenity
-
-    (hbnb) destroy Amenity f81e070f-52b6-4a5d-b13b-6c6c33838b4b
-    (hbnb)
-
-### How to delete a Place
-
-    (hbnb) destroy Place 25690873-52e4-4be3-8bcb-029249c91a32
-    (hbnb)
-
-### How to delete a Review
-
-    (hbnb) destroy Review e76e9aaa-9871-4db2-85dc-f5765cc85a71
-    (hbnb)
-
-### How to Display all the data
-
-    (hbnb) all
-    ["[User] (320098c5-ab99-4134-b205-5911dec9c9fa) {'id': '320098c5-ab99-4134-b205-5911dec9c9fa', 'created_at': datetime.datetime(2022, 10, 30, 14, 22, 59, 416038), 'updated_at': datetime.datetime(2022, 10, 30, 14, 22, 59, 416059)}", "[State] (d7fb1ba3-5c46-4197-aca1-36094cf22ee9) {'id': 'd7fb1ba3-5c46-4197-aca1-36094cf22ee9', 'created_at': datetime.datetime(2022, 10, 30, 14, 23, 34, 516438), 'updated_at': datetime.datetime(2022, 10, 30, 14, 23, 34, 516491)}", "[City] (3e647f03-7954-48da-89fd-6504c68dfb09) {'id': '3e647f03-7954-48da-89fd-6504c68dfb09', 'created_at': datetime.datetime(2022, 10, 30, 14, 23, 54, 140492), 'updated_at': datetime.datetime(2022, 10, 30, 14, 23, 54, 140522)}", "[Amenity] (f81e070f-52b6-4a5d-b13b-6c6c33838b4b) {'id': 'f81e070f-52b6-4a5d-b13b-6c6c33838b4b', 'created_at': datetime.datetime(2022, 10, 30, 14, 24, 11, 584531), 'updated_at': datetime.datetime(2022, 10, 30, 14, 24, 11, 584564)}", "[Place] (25690873-52e4-4be3-8bcb-029249c91a32) {'id': '25690873-52e4-4be3-8bcb-029249c91a32', 'created_at': datetime.datetime(2022, 10, 30, 14, 24, 40, 116241), 'updated_at': datetime.datetime(2022, 10, 30, 14, 24, 40, 116287)}", "[Review] (e76e9aaa-9871-4db2-85dc-f5765cc85a71) {'id': 'e76e9aaa-9871-4db2-85dc-f5765cc85a71', 'created_at': datetime.datetime(2022, 10, 30, 14, 24, 49, 88134), 'updated_at': datetime.datetime(2022, 10, 30, 14, 24, 49, 88189)}"]
-    (hbnb)
-
-### How to update a user
-
-    (hbnb) update User 320098c5-ab99-4134-b205-5911dec9c9fa name School
-    (hbnb)
-
-### How to count number users
-
-    (hbnb) count User
-    1
-    (hbnb)
+###### Example 1: Destroy a User
+Usage: <class_name>.destroy(<_id>)
+```
+(hbnb) User.destroy("99f45908-1d17-46d1-9dd2-b7571128115b")
+(hbnb)
+(hbnb) User.all()
+(hbnb) ["[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
+```
+###### Example 2: Update User (by attribute)
+Usage: <class_name>.update(<_id>, <attribute_name>, <attribute_value>)
+```
+(hbnb) User.update("98bea5de-9cb0-4d78-8a9d-c4de03521c30", name "Todd the Toad")
+(hbnb)
+(hbnb) User.all()
+(hbnb) ["[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'name': 'Todd the Toad', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
+```
+###### Example 3: Update User (by dictionary)
+Usage: <class_name>.update(<_id>, <dictionary>)
+```
+(hbnb) User.update("98bea5de-9cb0-4d78-8a9d-c4de03521c30", {'name': 'Fred the Frog', 'age': 9})
+(hbnb)
+(hbnb) User.all()
+(hbnb) ["[User] (98bea5de-9cb0-4d78-8a9d-c4de03521c30) {'updated_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134362), 'name': 'Fred the Frog', 'age': 9, 'id': '98bea5de-9cb0-4d78-8a9d-c4de03521c30', 'created_at': datetime.datetime(2020, 2, 19, 21, 47, 29, 134343)}"]
+```
+<br>
